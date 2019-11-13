@@ -3,16 +3,14 @@
 TestSuite::TestSuite()
 {
   isEmptyTest = false;
+  peekFrontTest = false;
   runTests();
 }
 
 void TestSuite::runTests()
 {
   TestIsEmpty();
-  test3(qMaster);
-  test4(qMaster);
-  test5(qMaster);
-  test6(qMaster);
+  TestPeekFront();
   test7(qMaster);
   test8(qMaster);
   test9(qMaster);
@@ -26,6 +24,7 @@ void TestSuite::TestIsEmpty()
   {
     isEmptyTest = true;
   }
+  cout << "\n";
 }
 
 bool TestSuite::isEmptyTest1(Queue& q)
@@ -53,49 +52,67 @@ bool TestSuite::isEmptyTest2(Queue& q)
 	}
 }
 
-void TestSuite::test3(Queue& q)
+void TestSuite::TestPeekFront()
 {
-  cout << "Test 3: Enqueue 5 on empty queue then peekFront returns 5: ";
+  cout << "Method Test 2: peekFront()\n\n";
+  if(peekFrontTest1(qMaster) && peekFrontTest2(qMaster) && peekFrontTest3(qMaster) && peekFrontTest4(qMaster))
+  {
+    peekFrontTest = true;
+  }
+  cout << "\n";
+}
+
+bool TestSuite::peekFrontTest1(Queue& q)
+{
+  cout << "\tpeekFront() Test 1: Enqueue 5 on empty queue then peekFront returns 5: ";
   q.enqueue(5);
   if(q.peekFront() == 5) {
 		cout << "PASSED\n";
+    return true;
 	} else {
 		cout << "FAILED\n";
+    return false;
 	}
 }
 
-void TestSuite::test4(Queue& q)
+bool TestSuite::peekFrontTest2(Queue& q)
 {
-  cout << "Test 4: Enqueue 12 on empty queue then peekFront returns 12: ";
+  cout << "\tpeekFront() Test 2: Enqueue 12 on empty queue then peekFront returns 12: ";
   q.enqueue(12);
   if(q.peekFront() == 12) {
 		cout << "PASSED\n";
+    return true;
 	} else {
 		cout << "FAILED\n";
+    return false;
 	}
 }
 
-void TestSuite::test5(Queue& q)
+bool TestSuite::peekFrontTest3(Queue& q)
 {
-  cout << "Test 5: Enqueue 5, then 12, on empty queue then peekFront returns 5: ";
+  cout << "\tpeekFront() Test 3: Enqueue 5, then 12, on empty queue then peekFront returns 5: ";
   q.enqueue(5);
   q.enqueue(12);
   if(q.peekFront() == 5) {
 		cout << "PASSED\n";
+    return true;
 	} else {
 		cout << "FAILED\n";
+    return false;
 	}
 }
 
-void TestSuite::test6(Queue& q)
+bool TestSuite::peekFrontTest4(Queue& q)
 {
-  cout << "Test 6: peekFront on empty queue throws an error: ";
+  cout << "\tpeekFront() Test 4: peekFront on empty queue throws an error: ";
   try {
     q.peekFront();
     cout << "FAILED\n";
+    return false;
   }
   catch (std::runtime_error e) {
     cout << "PASSED\n";
+    return true;
   }
 }
 

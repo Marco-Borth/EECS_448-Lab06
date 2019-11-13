@@ -11,7 +11,10 @@ class TestSuite
 	private:
 
 	Queue qMaster;
-	bool isEmptyTest;
+	bool isEmptyTest, peekFrontTest;
+
+	bool isEmptyTest1(Queue& q);
+	bool isEmptyTest2(Queue& q);
 
 	public:
 
@@ -24,13 +27,13 @@ class TestSuite
 
 	void TestIsEmpty();
 
-	bool isEmptyTest1(Queue& q);
-	bool isEmptyTest2(Queue& q);
+	void TestPeekFront();
 
-	void test3(Queue& q);
-	void test4(Queue& q);
-	void test5(Queue& q);
-	void test6(Queue& q);
+	bool peekFrontTest1(Queue& q);
+	bool peekFrontTest2(Queue& q);
+	bool peekFrontTest3(Queue& q);
+	bool peekFrontTest4(Queue& q);
+	
 	void test7(Queue& q);
 	void test8(Queue& q);
 	void test9(Queue& q);
