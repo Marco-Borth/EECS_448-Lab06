@@ -110,7 +110,7 @@ bool TestSuite::peekFrontTest4(Queue& q)
     cout << "FAILED\n";
     return false;
   }
-  catch (std::runtime_error e) {
+  catch (std::runtime_error& e) {
     cout << "PASSED\n";
     return true;
   }
@@ -148,7 +148,7 @@ void TestSuite::test9(Queue& q)
     q.dequeue();
     cout << "FAILED\n";
   }
-  catch (std::runtime_error e) {
+  catch (std::runtime_error& e) {
     cout << "PASSED\n";
   }
 }
@@ -164,7 +164,7 @@ void TestSuite::test10(Queue& q)
     q.peekFront();
     cout << "FAILED\n";
   }
-  catch (std::runtime_error e) {
+  catch (std::runtime_error& e) {
     cout << "PASSED\n";
   }
 }
