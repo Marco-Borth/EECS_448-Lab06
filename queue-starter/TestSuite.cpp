@@ -2,13 +2,13 @@
 
 TestSuite::TestSuite()
 {
+  isEmptyTest = false;
   runTests();
 }
 
 void TestSuite::runTests()
 {
-  test1(qMaster);
-  test2(qMaster);
+  TestIsEmpty();
   test3(qMaster);
   test4(qMaster);
   test5(qMaster);
@@ -19,24 +19,37 @@ void TestSuite::runTests()
   test10(qMaster);
 }
 
-void TestSuite::test1(Queue& q)
+bool TestSuite::TestIsEmpty()
 {
-  cout << "Test 1: Newly created Queue is empty: ";
+  cout << "Method Test 1: isEmpty()\n\n";
+  if(isEmptyTest1(qMaster) && isEmptyTest2(qMaster))
+  {
+    isEmptyTest = true;
+  }
+}
+
+bool TestSuite::isEmptyTest1(Queue& q)
+{
+  cout << "\tisEmpty() Test 1: Newly created Queue is empty: ";
 	if(q.isEmpty()) {
 		cout << "PASSED\n";
+    return true;
 	} else {
 		cout << "FAILED\n";
+    return false;
 	}
 }
 
-void TestSuite::test2(Queue& q)
+void TestSuite::isEmptyTest2(Queue& q)
 {
-  cout << "Test 2: Enqueing a value makes the Queue not empty: ";
+  cout << "\t isEmpty() Test 2: Enqueing a value makes the Queue not empty: ";
   q.enqueue(5);
   if(!q.isEmpty()) {
 		cout << "PASSED\n";
+    return true;
 	} else {
 		cout << "FAILED\n";
+    return false;
 	}
 }
 

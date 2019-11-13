@@ -11,6 +11,7 @@ class TestSuite
 	private:
 
 	Queue qMaster;
+	bool isEmptyTest;
 
 	public:
 
@@ -20,8 +21,12 @@ class TestSuite
 	TestSuite();
 
 	void runTests();
-	void test1(Queue& q);
-	void test2(Queue& q);
+
+	void TestIsEmpty();
+
+	void isEmptyTest1(Queue& q);
+	void isEmptyTest2(Queue& q);
+
 	void test3(Queue& q);
 	void test4(Queue& q);
 	void test5(Queue& q);
