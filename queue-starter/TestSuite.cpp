@@ -19,7 +19,7 @@ void TestSuite::runTests()
   test10(qMaster);
 }
 
-bool TestSuite::TestIsEmpty()
+void TestSuite::TestIsEmpty()
 {
   cout << "Method Test 1: isEmpty()\n\n";
   if(isEmptyTest1(qMaster) && isEmptyTest2(qMaster))
@@ -40,9 +40,9 @@ bool TestSuite::isEmptyTest1(Queue& q)
 	}
 }
 
-void TestSuite::isEmptyTest2(Queue& q)
+bool TestSuite::isEmptyTest2(Queue& q)
 {
-  cout << "\t isEmpty() Test 2: Enqueing a value makes the Queue not empty: ";
+  cout << "\tisEmpty() Test 2: Enqueing a value makes the Queue not empty: ";
   q.enqueue(5);
   if(!q.isEmpty()) {
 		cout << "PASSED\n";

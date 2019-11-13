@@ -24,8 +24,8 @@ class TestSuite
 
 	void TestIsEmpty();
 
-	void isEmptyTest1(Queue& q);
-	void isEmptyTest2(Queue& q);
+	bool isEmptyTest1(Queue& q);
+	bool isEmptyTest2(Queue& q);
 
 	void test3(Queue& q);
 	void test4(Queue& q);
