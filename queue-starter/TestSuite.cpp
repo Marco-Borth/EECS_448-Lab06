@@ -12,6 +12,7 @@ void TestSuite::runTests()
   test3(qMaster);
   test4(qMaster);
   test5(qMaster);
+  test6(qMaster);
 }
 
 void TestSuite::test1(Queue& q)
@@ -67,4 +68,17 @@ void TestSuite::test5(Queue& q)
 	} else {
 		cout << "FAILED\n";
 	}
+}
+
+void TestSuite::test6(Queue& q)
+{
+  cout << "Test 6: peekFront on empty queue throws an error: ";
+
+  try {
+    x = q.peekFront();
+  }
+  catch (int x) {
+    cout << "PASSED\n";
+  }
+  cout << "FAILED\n";
 }
