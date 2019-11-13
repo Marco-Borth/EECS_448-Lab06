@@ -73,12 +73,11 @@ void TestSuite::test5(Queue& q)
 void TestSuite::test6(Queue& q)
 {
   cout << "Test 6: peekFront on empty queue throws an error: ";
-
   try {
-    x = q.peekFront();
+    q.peekFront();
+    cout << "FAILED\n";
   }
-  catch (int x) {
+  catch (std::runtime_error e) {
     cout << "PASSED\n";
   }
-  cout << "FAILED\n";
 }
