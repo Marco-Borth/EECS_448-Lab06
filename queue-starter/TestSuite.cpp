@@ -4,6 +4,7 @@ TestSuite::TestSuite()
 {
   isEmptyTest = false;
   peekFrontTest = false;
+  dequeueTest = false;
   runTests();
 }
 
@@ -11,16 +12,13 @@ void TestSuite::runTests()
 {
   TestIsEmpty();
   TestPeekFront();
-  test7(qMaster);
-  test8(qMaster);
-  test9(qMaster);
-  test10(qMaster);
+  TestDequeue();
 }
 
 void TestSuite::TestIsEmpty()
 {
   cout << "Method Test 1: isEmpty()\n\n";
-  if(isEmptyTest1(qMaster) && isEmptyTest2(qMaster))
+  if(isEmptyTest1(qMaster) && isEmptyTest2(qMaster) && isEmptyTest3(qMaster))
   {
     isEmptyTest = true;
   }
@@ -43,6 +41,20 @@ bool TestSuite::isEmptyTest2(Queue& q)
 {
   cout << "\tisEmpty() Test 2: Enqueing a value makes the Queue not empty: ";
   q.enqueue(5);
+  if(!q.isEmpty()) {
+		cout << "PASSED\n";
+    return true;
+	} else {
+		cout << "FAILED\n";
+    return false;
+	}
+}
+
+bool TestSuite::isEmptyTest3(Queue& q)
+{
+  cout << "\tisEmpty() Test 3: Enqueing two or more values makes the Queue not empty: ";
+  q.enqueue(5);
+  q.enqueue(12);
   if(!q.isEmpty()) {
 		cout << "PASSED\n";
     return true;
@@ -103,55 +115,70 @@ bool TestSuite::peekFrontTest3(Queue& q)
   }
 }
 
-void TestSuite::test7(Queue& q)
+void TestSuite::TestDequeue()
 {
-  cout << "Test 7: Enqueuing a value, then dequeuing, makes the Queue not empty: ";
+  cout << "Method Test 3: dequeue()\n\n";
+  if(dequeueTest1(qMaster) && dequeueTest2(qMaster) && dequeueTest3(qMaster) && dequeueTest4(qMaster))
+  {
+    dequeueTest = true;
+  }
+  cout << "\n";
+}
+
+bool TestSuite::dequeueTest1(Queue& q)
+{
+  cout << "\tdequeue() Test 1: Enqueuing a value, then dequeuing, makes the Queue not empty: ";
   q.enqueue(5);
   q.dequeue();
 	if(q.isEmpty()) {
 		cout << "PASSED\n";
+    return true;
 	} else {
 		cout << "FAILED\n";
+    return false;
 	}
 }
 
-void TestSuite::test8(Queue& q)
+bool TestSuite::dequeueTest2(Queue& q)
 {
-  cout << "Test 8: On empty queue, Enqueue 5, then 12, then dequeue, peekFront returns 5: ";
+  cout << "\tdequeue() Test 2: On empty queue, Enqueue 5, then 12, then dequeue, peekFront returns 12: ";
   q.enqueue(5);
   q.enqueue(12);
   q.dequeue();
-  if(q.peekFront() == 5) {
+  if(q.peekFront() == 12) {
 		cout << "PASSED\n";
+    return true;
 	} else {
 		cout << "FAILED\n";
+    return false;
 	}
 }
 
-void TestSuite::test9(Queue& q)
+bool TestSuite::dequeueTest3(Queue& q)
 {
-  cout << "Test 9: dequeue on empty queue throws an error: ";
+  cout << "\tdequeue() Test 3: dequeue on empty queue throws an error: ";
   try {
     q.dequeue();
     cout << "FAILED\n";
+    return false;
   }
   catch (std::runtime_error& e) {
     cout << "PASSED\n";
+    return true;
   }
 }
 
-void TestSuite::test10(Queue& q)
+bool TestSuite::dequeueTest4(Queue& q)
 {
-  cout << "Test 10: On empty queue, Enqueue 5, then 12, then dequeue twice, peekFront throws an error: ";
-  try {
-    q.enqueue(5);
-    q.enqueue(12);
-    q.dequeue();
-    q.dequeue();
-    q.peekFront();
-    cout << "FAILED\n";
-  }
-  catch (std::runtime_error& e) {
-    cout << "PASSED\n";
-  }
+  cout << "\tdequeue() Test 4: On empty queue, Enqueue 5, then 12, then 21, then dequeue twice, peekFront returns 12: ";
+  q.enqueue(5);
+  q.enqueue(12);
+  q.enqueue(21);
+  if(q.peekFront() == 21) {
+		cout << "PASSED\n";
+    return true;
+	} else {
+		cout << "FAILED\n";
+    return false;
+	}
 }
