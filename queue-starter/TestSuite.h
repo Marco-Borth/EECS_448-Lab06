@@ -29,6 +29,7 @@ class TestSuite
 	void test7(Queue& q);
 	void test8(Queue& q);
 	void test9(Queue& q);
+	void test10(Queue& q);
 };
 
 #endif

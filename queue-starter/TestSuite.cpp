@@ -16,6 +16,7 @@ void TestSuite::runTests()
   test7(qMaster);
   test8(qMaster);
   test9(qMaster);
+  test10(qMaster);
 }
 
 void TestSuite::test1(Queue& q)
@@ -115,6 +116,22 @@ void TestSuite::test9(Queue& q)
   cout << "Test 9: dequeue on empty queue throws an error: ";
   try {
     q.dequeue();
+    cout << "FAILED\n";
+  }
+  catch (std::runtime_error e) {
+    cout << "PASSED\n";
+  }
+}
+
+void TestSuite::test10(Queue& q)
+{
+  cout << "Test 10: On empty queue, Enqueue 5, then 12, then dequeue twice, peekFront throws an error: ";
+  try {
+    q.enqueue(5);
+    q.enqueue(12);
+    q.dequeue();
+    q.dequeue();
+    q.peekFront();
     cout << "FAILED\n";
   }
   catch (std::runtime_error e) {
