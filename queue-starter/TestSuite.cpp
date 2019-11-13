@@ -55,7 +55,7 @@ bool TestSuite::isEmptyTest2(Queue& q)
 void TestSuite::TestPeekFront()
 {
   cout << "Method Test 2: peekFront()\n\n";
-  if(peekFrontTest1(qMaster) && peekFrontTest2(qMaster) && peekFrontTest3(qMaster) && peekFrontTest4(qMaster))
+  if(peekFrontTest1(qMaster) && peekFrontTest2(qMaster) && peekFrontTest3(qMaster))
   {
     peekFrontTest = true;
   }
@@ -77,20 +77,7 @@ bool TestSuite::peekFrontTest1(Queue& q)
 
 bool TestSuite::peekFrontTest2(Queue& q)
 {
-  cout << "\tpeekFront() Test 2: Enqueue 12 on empty queue then peekFront returns 12: ";
-  q.enqueue(12);
-  if(q.peekFront() == 12) {
-		cout << "PASSED\n";
-    return true;
-	} else {
-		cout << "FAILED\n";
-    return false;
-	}
-}
-
-bool TestSuite::peekFrontTest3(Queue& q)
-{
-  cout << "\tpeekFront() Test 3: Enqueue 5, then 12, on empty queue then peekFront returns 5: ";
+  cout << "\tpeekFront() Test 2: Enqueue 5, then 12, on empty queue then peekFront returns 5: ";
   q.enqueue(5);
   q.enqueue(12);
   if(q.peekFront() == 5) {
@@ -102,9 +89,9 @@ bool TestSuite::peekFrontTest3(Queue& q)
 	}
 }
 
-bool TestSuite::peekFrontTest4(Queue& q)
+bool TestSuite::peekFrontTest3(Queue& q)
 {
-  cout << "\tpeekFront() Test 4: peekFront on empty queue throws an error: ";
+  cout << "\tpeekFront() Test 3: peekFront on empty queue throws an error: ";
   try {
     q.peekFront();
     cout << "FAILED\n";

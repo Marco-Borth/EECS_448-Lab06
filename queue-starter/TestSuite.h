@@ -19,7 +19,6 @@ class TestSuite
 	bool peekFrontTest1(Queue& q);
 	bool peekFrontTest2(Queue& q);
 	bool peekFrontTest3(Queue& q);
-	bool peekFrontTest4(Queue& q);
 
 	public:
 
