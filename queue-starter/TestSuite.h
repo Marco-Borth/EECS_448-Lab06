@@ -16,6 +16,11 @@ class TestSuite
 	bool isEmptyTest1(Queue& q);
 	bool isEmptyTest2(Queue& q);
 
+	bool peekFrontTest1(Queue& q);
+	bool peekFrontTest2(Queue& q);
+	bool peekFrontTest3(Queue& q);
+	bool peekFrontTest4(Queue& q);
+
 	public:
 
 	/**
@@ -29,11 +34,6 @@ class TestSuite
 
 	void TestPeekFront();
 
-	bool peekFrontTest1(Queue& q);
-	bool peekFrontTest2(Queue& q);
-	bool peekFrontTest3(Queue& q);
-	bool peekFrontTest4(Queue& q);
-	
 	void test7(Queue& q);
 	void test8(Queue& q);
 	void test9(Queue& q);
