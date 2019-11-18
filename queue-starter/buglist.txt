@@ -1,0 +1,15 @@
+Queue bug list:
+
+peekFront Method is defective:
+
+	ERROR: peekFront() Test 2: peekFront does not return 5 when 5 and 12 are Enqueued respectively, 5 should be the front of queue.
+	ERROR: peekFront() Test 3: peekFront does not throw an error on an empty list.
+
+dequeue Method is defective:
+
+	ERROR: dequeue() Test 1: dequeue does not remove a single node entry at m_front.
+	ERROR: dequeue() Test 2: peekFront does not return 12 when 5 and 12 are Enqueued respectively, then 5, which is the front of queue, is dequeued.
+	ERROR: dequeue() Test 3: dequeue does not throw an error on an empty list.
+
+Possible error detected: Back of queue is returned as m_front of queue on identified methods.
+Possible error detected: Lack of error handling for errors thrown on identified methods.

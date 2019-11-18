@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <fstream>
 #include "Queue.h"
 using namespace std;
 
@@ -25,6 +26,10 @@ class TestSuite
 	bool dequeueTest2(Queue& q);
 	bool dequeueTest3(Queue& q);
 	bool dequeueTest4(Queue& q);
+
+	bool test1, test2, test3, test4;
+
+	ofstream myfile;
 
 	public:
 

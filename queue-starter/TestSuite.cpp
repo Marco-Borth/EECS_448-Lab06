@@ -5,20 +5,107 @@ TestSuite::TestSuite()
   isEmptyTest = false;
   peekFrontTest = false;
   dequeueTest = false;
+  test1 = false;
+  test2 = false;
+  test3 = false;
+  test4 = false;
   runTests();
 }
 
 void TestSuite::runTests()
 {
+  myfile.open ("buglist.txt");
+  myfile << "Queue bug list:\n\n";
+
+  bool errorHandlingPresent = true;
+  bool peekCorrectFront = true;
+
   TestIsEmpty();
+  if(!isEmptyTest) {
+    myfile << "isEmpty Method is defective:\n\n";
+    if(test1 == false) {
+      myfile << "\tERROR: isEmpty() Test 1: Newly created Queue is NOT empty.\n";
+    }
+
+    if(test2 == false) {
+      myfile << "\tERROR: isEmpty() Test 2: Enqueing a value makes the Queue still return as empty.\n";
+    }
+
+    if(test3 == false) {
+      myfile << "\tERROR: isEmpty() Test 3: Enqueing two or more values makes the Queue still return as empty.\n";
+    }
+    myfile <<"\n";
+  }
+
   TestPeekFront();
+  if(!peekFrontTest) {
+    myfile << "peekFront Method is defective:\n\n";
+    if(test1 == false) {
+      myfile << "\tERROR: peekFront() Test 1: peekFront does not return 5 when 5 is Enqueued.\n";
+    }
+
+    if(test2 == false) {
+      myfile << "\tERROR: peekFront() Test 2: peekFront does not return 5 when 5 and 12 are Enqueued respectively, 5 should be the front of queue.\n";
+      peekCorrectFront = false;
+    }
+
+    if(test3 == false) {
+      myfile << "\tERROR: peekFront() Test 3: peekFront does not throw an error on an empty list.\n";
+    }
+    myfile <<"\n";
+  }
+
   TestDequeue();
+  if(!dequeueTest) {
+    myfile << "dequeue Method is defective:\n\n";
+    if(test1 == false) {
+      myfile << "\tERROR: dequeue() Test 1: dequeue does not remove a single node entry at m_front.\n";
+    }
+
+    if(test2 == false) {
+      myfile << "\tERROR: dequeue() Test 2: peekFront does not return 12 when 5 and 12 are Enqueued respectively, then 5, which is the front of queue, is dequeued.\n";
+      peekCorrectFront = false;
+    }
+
+    if(test3 == false) {
+      myfile << "\tERROR: dequeue() Test 3: dequeue does not throw an error on an empty list.\n";
+      errorHandlingPresent = false;
+    }
+
+    if(test4 == false) {
+      myfile << "\tERROR: dequeue() Test 4:peekFront does not return 21 when 5, 12, and 21 are Enqueued respectively, then 5 and 12 are dequeued.\n";
+    }
+    myfile <<"\n";
+  }
+
+  if(!peekCorrectFront) {
+    myfile << "Possible error detected: Back of queue is returned as m_front of queue on identified methods.\n";
+  }
+
+  if(!errorHandlingPresent) {
+    myfile << "Possible error detected: Lack of error handling for errors thrown on identified methods.\n";
+  }
+
+  if (isEmptyTest && peekFrontTest && dequeueTest) {
+    cout << "no errors have been listed.";
+  }
+
+  myfile.close();
+
+  if (!isEmptyTest || !peekFrontTest || !dequeueTest) {
+    cout << "See 'buglist.txt' for list of errors.\n\n";
+  } else {
+    cout << "Queue Class Examination SUCCESSFUL.\n\n";
+  }
 }
 
 void TestSuite::TestIsEmpty()
 {
   cout << "Method Test 1: isEmpty()\n\n";
-  if(isEmptyTest1(qMaster) && isEmptyTest2(qMaster) && isEmptyTest3(qMaster))
+  test1 = isEmptyTest1(qMaster);
+  test2 = isEmptyTest2(qMaster);
+  test3 = isEmptyTest3(qMaster);
+  if(test1 && test2 && test3)
   {
     isEmptyTest = true;
   }
@@ -67,7 +154,10 @@ bool TestSuite::isEmptyTest3(Queue& q)
 void TestSuite::TestPeekFront()
 {
   cout << "Method Test 2: peekFront()\n\n";
-  if(peekFrontTest1(qMaster) && peekFrontTest2(qMaster) && peekFrontTest3(qMaster))
+  test1 = peekFrontTest1(qMaster);
+  test2 = peekFrontTest2(qMaster);
+  test3 = peekFrontTest3(qMaster);
+  if(test1 && test2 && test3)
   {
     peekFrontTest = true;
   }
@@ -118,7 +208,11 @@ bool TestSuite::peekFrontTest3(Queue& q)
 void TestSuite::TestDequeue()
 {
   cout << "Method Test 3: dequeue()\n\n";
-  if(dequeueTest1(qMaster) && dequeueTest2(qMaster) && dequeueTest3(qMaster) && dequeueTest4(qMaster))
+  test1 = dequeueTest1(qMaster);
+  test2 = dequeueTest2(qMaster);
+  test3 = dequeueTest3(qMaster);
+  test4 = dequeueTest4(qMaster);
+  if(test1 && test2 && test3 && test4)
   {
     dequeueTest = true;
   }
@@ -170,7 +264,7 @@ bool TestSuite::dequeueTest3(Queue& q)
 
 bool TestSuite::dequeueTest4(Queue& q)
 {
-  cout << "\tdequeue() Test 4: On empty queue, Enqueue 5, then 12, then 21, then dequeue twice, peekFront returns 12: ";
+  cout << "\tdequeue() Test 4: On empty queue, Enqueue 5, then 12, then 21, then dequeue twice, peekFront returns 21: ";
   q.enqueue(5);
   q.enqueue(12);
   q.enqueue(21);
